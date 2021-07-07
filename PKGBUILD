@@ -8,13 +8,19 @@ url="https://github.com/saivishnu725/unzip_all"
 license=('GPL')
 depends=('unzip' 'bash' 'bzip2')
 makedepends=('gcc' 'git')
-source=('unzip_all::git://github.com/saivishnu725/unzip_all.git')
+#source=('https://github.com/saivishnu725/unzip_all.git')
+source=('https://github.com/saivishnu725/unzip_all/archive/refs/heads/master.zip')
 #noextract=()
 md5sums=('SKIP')
 
+prepare()
+{
+    mv ${srcdir}/${pkgname}-master ${srcdir}/${pkgname}
+}
+
 build() {
 	cd "$pkgname"
-	make 
+    gcc unzip_all.c -o unzip_all 
 }
 
 package() {
