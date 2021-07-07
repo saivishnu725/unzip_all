@@ -6,30 +6,18 @@ pkgdesc="A tool to unzip all the .zip files in the current working directory. "
 arch=('x86_64')
 url="https://github.com/saivishnu725/unzip_all"
 license=('GPL')
-depends=('unzip' 'git' 'bash' 'bzip2')
-makedepends=('gcc')
+depends=('unzip' 'bash' 'bzip2')
+makedepends=('gcc' 'git')
 source=('unzip_all::git://github.com/saivishnu725/unzip_all.git')
-noextract=()
-md5sums=()
-validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
+#noextract=()
+md5sums=('SKIP')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+	cd "$pkgname"
+	make 
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname"
+    install -Dm755 ./unzip_all "$pkgdir/usr/bin/unzip_all"
 }
