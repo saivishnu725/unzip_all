@@ -4,6 +4,9 @@ CLI tool to unzip all the zip files in the current working directory.
 
 #
 
+Available in the [AUR](https://wiki.archlinux.org/title/Arch_User_Repository) - [unzip_all](https://aur.archlinux.org/packages/unzip_all)
+
+#
 ## Prerequisites/ Dependencies
 
 1.  This tool runs on any GNU/Linux distribution.
